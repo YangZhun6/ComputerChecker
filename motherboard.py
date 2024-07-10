@@ -1,8 +1,12 @@
 import subprocess 
 import wmi 
-
-
-
+'''
+创建日期：2024 7 9 19：00
+创建者：YZ(github:YangZhun6)
+描述：检测内存信息的模块，仅在Windows系统有效
+版本：V1.1
+转载代码请标明原出处,请勿对代码进行商业盈利活动
+'''
 id = wmi.WMI()
 def motherboard_vendor():  
     # 使用wmic命令获取主板的厂商信息  
