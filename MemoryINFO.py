@@ -6,7 +6,7 @@ import re
 创建者：YZ(github:YangZhun6)
 描述：检测内存信息的模块，仅在Windows系统有效
 版本：V1.0
-转载代码请标明原出处
+转载代码请标明原出处,请勿对代码进行商业盈利活动
 '''
 def remove_elements(arr, n):#必要代码
     return arr[n:]
