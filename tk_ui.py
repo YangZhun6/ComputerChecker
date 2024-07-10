@@ -5,7 +5,7 @@ from motherboard import *
 from test import *
 import wget
 import zipfile
-
+import os
 
 
 root = Tk()
@@ -29,12 +29,22 @@ Test_motherboard.place(x=150,y=30)
 Test_frame_text = Text(root,height=25,width=35)
 Test_frame_text.place(x=10,y=60)
 
-def findnew():
+def findnew(Test_frame_text):
+    Test_frame_text.delete('1.0',"end")
     url = "https://codeload.github.com/YangZhun6/ComputerChecker/zip/refs/heads/main"
     wget.download(url,"new.zip")
     file_url = "new.zip"
-    zipfiles = zipfile.ZipFile(file_url)
-    zipfiles.extractall("/")
-    zipfiles.close()
-find_new = Button(root,text="检查更新",command=lambda:root.after(1000,findnew))
+    with zipfile.ZipFile("new.zip","r") as z:
+        z.extractall("./")
+        z.close()
+    with open("ComputerChecker-main/version.txt","r") as f:
+        new_ver = f.read()
+    with open("version.txt","r") as f:
+        now_ver = f.read()
+    if float(now_ver) < float(new_ver):
+        Test_frame_text.insert('end',"有新的版本,自动更新")
+    else:
+        Test_frame_text.insert('end',"现在这个版本已经很新了")
+    os.remove("new.zip")
+find_new = Button(root,text="检查更新",command=lambda:root.after(1000,lambda:findnew(Test_frame_text)))
 find_new.place(x=10,y=410)
