@@ -15,12 +15,3 @@ def print_pos(event):
 root.bind('<Motion>', print_pos)
 root.mainloop()
 
-'''
-# 主板序列号
-for board_id in c.Win32_BaseBoard():
-    print('主板序列号:',board_id.SerialNumber)
-
-# bios序列号
-for bios_id in c.Win32_BIOS():
-    print('bios序列号',bios_id.SerialNumber)
-'''
